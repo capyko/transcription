@@ -270,4 +270,55 @@ body.transcript-page {
         font-size: 0.82rem;
         padding: 10px 6px;
     }
+   .archive-months {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.month-section {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 0;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.month-section summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 16px 20px;
+    font-weight: bold;
+    font-size: 1.05rem;
+    background: #f6f3ef;
+    color: #5a4636;
+    position: relative;
+}
+
+.month-section summary::-webkit-details-marker {
+    display: none;
+}
+
+.month-section summary::after {
+    content: "＋";
+    position: absolute;
+    right: 20px;
+    font-weight: bold;
+}
+
+.month-section[open] summary::after {
+    content: "−";
+}
+
+.month-section .nav-link {
+    margin: 12px 16px;
+}
+
+.month-section .nav-link:first-of-type {
+    margin-top: 16px;
+}
+
+.month-section .nav-link:last-of-type {
+    margin-bottom: 16px;
+}
 }
