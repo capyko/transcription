@@ -228,20 +228,24 @@
         const GAS_URL = 'https://script.google.com/macros/s/AKfycbzxPP3fwYSYtgEYkREH0x9x3qdq47u-_YswFQyKja2QaIKxooZLRzWipKmuvo1a7wWS/exec';
         
         async function submitQ4(answer) {
+          const btns = document.querySelectorAll('#q4-survey button');
+          btns.forEach(b => b.disabled = true);
+        
           try {
             await fetch(GAS_URL, {
               method: 'POST',
               headers: { 'Content-Type': 'text/plain' },
               body: JSON.stringify({
-                answer: answer,       // 'early' または 'quality'
+                answer: answer,
                 ua: navigator.userAgent
               }),
-              mode: 'no-cors'         // GAS は no-cors が必要
+              mode: 'no-cors'
             });
-            showThanks();
           } catch (err) {
             console.error(err);
           }
+        
+          document.getElementById('q4-thanks').style.display = 'block';
         }
 </body>
 </html>
