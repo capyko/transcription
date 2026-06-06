@@ -28,7 +28,32 @@
         <p class="subtitle">Please note that the content on this page was created using AI speech recognition, so the Japanese text may contain many errors or mistranscriptions.I’m sorry if this makes it difficult to read. <br>I’ll continue correcting it little by little.</p>
         <p class="subtitle" style="text-align: right;"> Site owner：かぴこ  &nbsp;&nbsp;<a href="https://x.com/love2wombat" target="_blank">X</a></p>
     </header>
-
+        <div id="q4-survey">
+          <p style="font-weight:bold;margin:0 0 4px">
+            いつも見てくださるみなさまへ。更新のタイミングについて、教えてください
+          </p>
+          <p style="font-size:0.9em;color:#555;margin:0 0 12px;line-height:1.6">
+            手動での誤変換修正作業があるため、時間が取れない時は更新が遅くなってしまいます。正直、どう思われます？
+          </p>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <button onclick="submitQ4('early')"
+              style="border:1px solid #ccc;border-radius:6px;
+                     padding:10px 16px;text-align:left;
+                     font-size:0.9em;cursor:pointer;background:#fff">
+              誤変換があっても、早く更新して欲しい
+            </button>
+            <button onclick="submitQ4('quality')"
+              style="border:1px solid #ccc;border-radius:6px;
+                     padding:10px 16px;text-align:left;
+                     font-size:0.9em;cursor:pointer;background:#fff">
+              誤変換を修正した状態で、ちゃんと読みたい
+            </button>
+          </div>
+          <p id="q4-thanks" style="display:none;color:green;
+             font-size:0.9em;margin-top:10px">
+            ありがとうございます！
+          </p>
+        </div>
     <main>
         <nav class="archive-months"><!-- 月ごとに折りたたみ。最新月のみ最初から開いています -->
             <details class="month-section" open=""><summary>June 2026</summary><div class="month-links">
@@ -200,6 +225,23 @@
         <p>&copy; さとべぇRADIO All Rights Reserved.</p>
     </footer>
 </div>
-
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbzxPP3fwYSYtgEYkREH0x9x3qdq47u-_YswFQyKja2QaIKxooZLRzWipKmuvo1a7wWS/exec';
+        
+        async function submitQ4(answer) {
+          try {
+            await fetch(GAS_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'text/plain' },
+              body: JSON.stringify({
+                answer: answer,       // 'early' または 'quality'
+                ua: navigator.userAgent
+              }),
+              mode: 'no-cors'         // GAS は no-cors が必要
+            });
+            showThanks();
+          } catch (err) {
+            console.error(err);
+          }
+        }
 </body>
 </html>
