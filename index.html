@@ -225,27 +225,29 @@
         <p>&copy; さとべぇRADIO All Rights Reserved.</p>
     </footer>
 </div>
-        const GAS_URL = 'https://script.google.com/macros/s/AKfycbzxPP3fwYSYtgEYkREH0x9x3qdq47u-_YswFQyKja2QaIKxooZLRzWipKmuvo1a7wWS/exec';
-        
-        async function submitQ4(answer) {
-          const btns = document.querySelectorAll('#q4-survey button');
-          btns.forEach(b => b.disabled = true);
-        
-          try {
-            await fetch(GAS_URL, {
-              method: 'POST',
-              headers: { 'Content-Type': 'text/plain' },
-              body: JSON.stringify({
-                answer: answer,
-                ua: navigator.userAgent
-              }),
-              mode: 'no-cors'
-            });
-          } catch (err) {
-            console.error(err);
-          }
-        
-          document.getElementById('q4-thanks').style.display = 'block';
-        }
+<script>
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzxPP3fwYSYtgEYkREH0x9x3qdq47u-_YswFQyKja2QaIKxooZLRzWipKmuvo1a7wWS/exec';
+
+async function submitQ4(answer) {
+  const btns = document.querySelectorAll('#q4-survey button');
+  btns.forEach(b => b.disabled = true);
+
+  try {
+    await fetch(GAS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        answer: answer,
+        ua: navigator.userAgent
+      }),
+      mode: 'no-cors'
+    });
+  } catch (err) {
+    console.error(err);
+  }
+
+  document.getElementById('q4-thanks').style.display = 'block';
+}
+</script>
 </body>
 </html>
