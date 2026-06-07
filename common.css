@@ -6,8 +6,11 @@
 :root {
     --archive-bg: #0b0f19;
     --archive-text-main: #f8fafc;
-    --archive-text-sub: #64748b;
+    --archive-text-sub: #94a3b8;
     --archive-line: #334155;
+
+    --archive-card-bg: #111827;
+    --archive-card-header-bg: #0f172a;
 
     --page-primary: #2c3e50;
     --page-text: #333333;
@@ -52,6 +55,7 @@ body.archive-index {
     font-weight: 400;
     letter-spacing: 0.15em;
     margin: 0 0 8px 0;
+    color: var(--archive-text-main);
 }
 
 .archive-index .subtitle {
@@ -74,16 +78,17 @@ body.archive-index {
     color: var(--archive-text-main);
     text-decoration: none;
     border-bottom: 1px solid var(--archive-line);
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
 }
 
 .archive-index .nav-link:hover {
-    opacity: 0.6;
+    opacity: 0.75;
 }
 
 .archive-index .link-title {
     font-size: 1rem;
     letter-spacing: 0.05em;
+    color: var(--archive-text-main);
 }
 
 .archive-index .link-date {
@@ -98,6 +103,82 @@ body.archive-index {
     font-size: 0.75rem;
     color: var(--archive-text-sub);
     letter-spacing: 0.05em;
+}
+
+/* =========================================================
+   Archive month accordion
+   ========================================================= */
+
+.archive-index .archive-months {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.archive-index .month-section {
+    background: var(--archive-card-bg);
+    border: 1px solid var(--archive-line);
+    border-radius: 16px;
+    padding: 0;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+    overflow: hidden;
+}
+
+.archive-index .month-section summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 16px 20px;
+    font-weight: bold;
+    font-size: 1.05rem;
+    background: var(--archive-card-header-bg);
+    color: var(--archive-text-main);
+    position: relative;
+}
+
+.archive-index .month-section summary::-webkit-details-marker {
+    display: none;
+}
+
+.archive-index .month-section summary::after {
+    content: "＋";
+    position: absolute;
+    right: 20px;
+    font-weight: bold;
+    color: var(--archive-text-sub);
+}
+
+.archive-index .month-section[open] summary::after {
+    content: "−";
+}
+
+.archive-index .month-section .nav-link {
+    margin: 0 16px;
+    padding: 14px 0;
+    color: var(--archive-text-main);
+    border-bottom: 1px solid var(--archive-line);
+}
+
+.archive-index .month-section .nav-link:hover {
+    opacity: 0.75;
+    background-color: transparent;
+}
+
+.archive-index .month-section .nav-link:first-of-type {
+    margin-top: 10px;
+}
+
+.archive-index .month-section .nav-link:last-of-type {
+    margin-bottom: 10px;
+    border-bottom: none;
+}
+
+.archive-index .month-section .link-title {
+    color: var(--archive-text-main);
+    font-weight: 500;
+}
+
+.archive-index .month-section .link-date {
+    color: var(--archive-text-sub);
 }
 
 /* =========================================================
@@ -175,7 +256,10 @@ body.transcript-page {
     color: #888;
 }
 
-/* 前後ページ移動ナビ */
+/* =========================================================
+   前後ページ移動ナビ
+   ========================================================= */
+
 .transcript-page .episode-nav {
     display: grid;
     grid-template-columns: 1fr 0.8fr 1fr;
@@ -222,8 +306,12 @@ body.transcript-page {
     margin: 12px 0 0;
 }
 
+/* =========================================================
+   Mobile
+   ========================================================= */
+
 @media (max-width: 600px) {
-    .archive-index {
+    body.archive-index {
         align-items: flex-start;
     }
 
@@ -236,11 +324,47 @@ body.transcript-page {
         margin-bottom: 40px;
     }
 
+    .archive-index h1 {
+        font-size: 1.35rem;
+        line-height: 1.5;
+    }
+
+    .archive-index .subtitle {
+        font-size: 0.8rem;
+        line-height: 1.6;
+    }
+
     .archive-index .nav-link {
         align-items: flex-start;
         flex-direction: column;
         gap: 6px;
         padding: 16px 0;
+    }
+
+    .archive-index .month-section {
+        border-radius: 14px;
+    }
+
+    .archive-index .month-section summary {
+        padding: 15px 18px;
+        font-size: 1rem;
+    }
+
+    .archive-index .month-section .nav-link {
+        padding: 14px 0;
+    }
+
+    .archive-index .month-section .link-title {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .archive-index .month-section .link-date {
+        font-size: 0.78rem;
+    }
+
+    .archive-index footer {
+        margin-top: 56px;
     }
 
     .transcript-page .container {
@@ -270,55 +394,4 @@ body.transcript-page {
         font-size: 0.82rem;
         padding: 10px 6px;
     }
-   .archive-months {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.month-section {
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 0;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-    overflow: hidden;
-}
-
-.month-section summary {
-    cursor: pointer;
-    list-style: none;
-    padding: 16px 20px;
-    font-weight: bold;
-    font-size: 1.05rem;
-    background: #f6f3ef;
-    color: #5a4636;
-    position: relative;
-}
-
-.month-section summary::-webkit-details-marker {
-    display: none;
-}
-
-.month-section summary::after {
-    content: "＋";
-    position: absolute;
-    right: 20px;
-    font-weight: bold;
-}
-
-.month-section[open] summary::after {
-    content: "−";
-}
-
-.month-section .nav-link {
-    margin: 12px 16px;
-}
-
-.month-section .nav-link:first-of-type {
-    margin-top: 16px;
-}
-
-.month-section .nav-link:last-of-type {
-    margin-bottom: 16px;
-}
 }
