@@ -389,7 +389,19 @@ body.transcript-page {
         padding: 8px 0;
         backdrop-filter: blur(6px);
     }
+@media (max-width: 600px) {
+    .archive-index .subtitle {
+        font-size: 0.78rem;
+        line-height: 1.8;
+        letter-spacing: 0.04em;
+        margin-top: 10px;
+        max-width: 100%;
+    }
 
+    .archive-index header {
+        margin-bottom: 44px;
+    }
+}
     .transcript-page .episode-nav-button {
         font-size: 0.82rem;
         padding: 10px 6px;
