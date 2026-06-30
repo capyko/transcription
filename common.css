@@ -492,10 +492,21 @@ body.transcript-page {
     color: #ffffff !important;
   }
 }
+/* Search transcripts の文字を About this site に寄せる */
 .archive-index .search-summary {
   font-size: 0.85rem !important;
   font-weight: 400 !important;
   color: var(--archive-text-sub) !important;
   letter-spacing: 0.08em !important;
   line-height: 1.6 !important;
+  padding: 14px 20px !important;
+}
+
+@media (max-width: 600px) {
+  .archive-index .search-summary {
+    font-size: 0.78rem !important;
+    letter-spacing: 0.04em !important;
+    line-height: 1.8 !important;
+    padding: 14px 18px !important;
+  }
 }
