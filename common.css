@@ -510,3 +510,17 @@ body.transcript-page {
     padding: 14px 18px !important;
   }
 }
+/* 検索入力欄を少し大きくする */
+.archive-index #searchInput {
+  min-height: 56px;
+  padding: 16px 18px;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 600px) {
+  .archive-index #searchInput {
+    min-height: 58px;
+    padding: 17px 18px;
+    font-size: 1rem;
+  }
+}
