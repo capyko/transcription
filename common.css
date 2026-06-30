@@ -474,3 +474,21 @@ body.transcript-page {
 .search-result-link {
   color: #d8ceff;
 }
+/* スマホ用にも明示的に上書き */
+@media (max-width: 600px) {
+  #searchInput,
+  input#searchInput,
+  input[type="search"]#searchInput {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+
+    background: #3a3a48 !important;
+    background-color: #3a3a48 !important;
+    color: #ffffff !important;
+  }
+
+  #clearSearchButton {
+    background: #555566 !important;
+    color: #ffffff !important;
+  }
+}
