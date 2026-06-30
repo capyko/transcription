@@ -492,3 +492,10 @@ body.transcript-page {
     color: #ffffff !important;
   }
 }
+.archive-index .search-summary {
+  font-size: 0.85rem !important;
+  font-weight: 400 !important;
+  color: var(--archive-text-sub) !important;
+  letter-spacing: 0.08em !important;
+  line-height: 1.6 !important;
+}
