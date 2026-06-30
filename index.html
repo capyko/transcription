@@ -60,10 +60,33 @@
         </details>
     <main>
         <nav class="archive-months"><!-- 月ごとに折りたたみ。最新月のみ最初から開いています -->
+            <section class="search-area" aria-labelledby="search-heading">
+              <h2 id="search-heading">本文検索</h2>
+            
+              <div class="search-box">
+                <input
+                  type="search"
+                  id="searchInput"
+                  placeholder="キーワードで検索　例：とらぞう、プレバト、ガットインTV"
+                  autocomplete="off"
+                >
+                <button type="button" id="clearSearchButton">クリア</button>
+              </div>
+            
+              <p class="search-help">
+                タイトルと本文から検索できます。スペースで区切ると、複数キーワード検索になります。
+              </p>
+            
+              <div id="searchStatus" class="search-status" aria-live="polite"></div>
+              <div id="searchResults" class="search-results"></div>
+            </section>
+            
+            <script src="search.js"></script>
             <details class="month-section" open=""><summary>June 2026</summary><div class="month-links">
-                                <a class="nav-link" href="20260630.html">
+                <a class="nav-link" href="20260630.html">
                 <span class="link-title">『コンビニバーコード決済の最適解』</span>
                 <span class="link-date">2026.06.30</span></a>
+                
                 <a class="nav-link" href="20260629.html">
                 <span class="link-title">『とらぞうを語る① 出会い編』</span>
                 <span class="link-date">2026.06.29</span></a>
