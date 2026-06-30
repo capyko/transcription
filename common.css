@@ -524,3 +524,20 @@ body.transcript-page {
     font-size: 1rem;
   }
 }
+/* 検索入力欄を横に広げる */
+.archive-index .search-box {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+}
+
+.archive-index #searchInput {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+}
+
+.archive-index #clearSearchButton {
+  flex: 0 0 auto;
+}
